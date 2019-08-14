@@ -1,0 +1,49 @@
+Paraview-Nektar intreface plugin
+(paris_perdikaris@brown.edu)
+
+**************************************
+How to use the Paraview-Nektar plugin:
+**************************************
+1.) Make sure you have Paraview installed
+(http://paraview.org/paraview/resources/software.html)
+
+2.) Launch pvserver: mpirun -np 6 $(ParaviewDir)/bin/pvserver
+*** ParaView ships with it's own mpirun: 
+$(ParaviewDir)/lib/paraview-3.12/mpirun -n 6 $(ParaviewDir)/bin/pvserver
+
+3.) Launch paraview and:
+	i)  Choose "connect" and specify the name of a compatible server. 
+	For Atlas (if no server appears) then choose "Add server", 
+	type atlas.cfm.brown.edu, choose "configure" and enter 
+	Startup Type -> Manual.
+
+	ii) Load the Nektar local and remote plugins (both must be loaded!):
+	Tools->Plugin Manager->Load New...
+	The PV-Nektar plugin can be downloaded at:
+	http://paraview.org/paraview/resources/plugins.html
+	   On Atlas, the plugin is located at:
+	/usr/local/ParaView/PV_NEKTAR/NEKTAR_READER_MPI/BUILD_3.8.1
+	Then the "pvNektarReader" must be loaded in both the left (remote)
+	and the right (local) panes of the Plugin Manager window.
+
+	iii) Import your .nektar file and visualize your results.
+
+
+*******************************
+How to create the .nektar file:
+*******************************
+Here's a sample of how the .nektar (sample.nektar) file should be structured:
+
+REA_FILE:   $(PATH OF YOUR .rea FILE)/sample.rea	
+RST_DIR:    $(PATH OF YOUR .rst FILE)/			/* Make sure you rename sample.rst -> sample_0.rst */
+RST_BASE:   sample_					/* Base name of file */  
+RST_EXT:    rst						/* Extension after sample_%. */
+RST_START:  0						/* Id of your first .rst file (here: sample_0.rst)*/
+RST_INC:    1						/* sample_%.rst file increment */
+RST_NUM:    10						/* Total number of .rst files */
+RST_DIGITS: 0						/* ??? */
+TIME_START: 0.0						/* Start time of the simulation */
+TIME_INC:   0.50					/* Time step for which .rst file was generated */
+
+
+

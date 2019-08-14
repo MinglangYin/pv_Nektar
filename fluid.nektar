@@ -1,0 +1,10 @@
+REA_FILE:   /users/hli1/paraview-example/081_thrombus/081_thrombus.rea
+RST_DIR:    /users/hli1/paraview-example/081_thrombus
+RST_BASE:   081_thrombus_
+RST_EXT:    rst
+RST_START:  1
+RST_INC:    1
+RST_NUM:    1
+RST_DIGITS: 0
+TIME_START: 16
+TIME_INC:   0.25
